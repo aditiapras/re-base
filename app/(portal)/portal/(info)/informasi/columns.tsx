@@ -9,18 +9,18 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ChevronsUpDown, MoreHorizontal } from "lucide-react";
 import moment from "moment-timezone";
-import { Badge } from "@/components/ui/base-badge";
-import { Button } from "@/components/ui/base-button";
-import {
-    Menu,
-    MenuContent,
-    MenuGroup,
-    MenuGroupLabel,
-    MenuItem,
-    MenuSeparator,
-    MenuTrigger,
-} from "@/components/ui/base-menu";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+    DropdownMenu as Menu,
+    DropdownMenuContent as MenuContent,
+    DropdownMenuGroup as MenuGroup,
+    DropdownMenuLabel as MenuGroupLabel,
+    DropdownMenuItem as MenuItem,
+    DropdownMenuSeparator as MenuSeparator,
+    DropdownMenuTrigger as MenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export type Post = {
     _id: string;
@@ -125,7 +125,9 @@ export const columns: ColumnDef<Post>[] = [
                 </MenuContent>
             </Menu>
         ),
-        cell: ({ row }) => <span className="font-medium">{row.getValue("title")}</span>,
+        cell: ({ row }) => (
+            <span className="font-medium">{row.getValue("title")}</span>
+        ),
     },
     {
         accessorKey: "category",
@@ -239,7 +241,9 @@ export const columns: ColumnDef<Post>[] = [
         cell: ({ row }) => {
             const date = row.getValue("createdAt") as string;
             return (
-                <p className="text-sm px-2">{moment(date).format("DD MMM YYYY, HH:mm")}</p>
+                <p className="text-sm px-2">
+                    {moment(date).format("DD MMM YYYY, HH:mm")}
+                </p>
             );
         },
     },

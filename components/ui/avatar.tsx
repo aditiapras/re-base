@@ -2,14 +2,14 @@
 
 import * as React from 'react';
 import { cn } from '@/lib/utils';
-import { Avatar } from '@base-ui-components/react/avatar';
 import { cva, VariantProps } from 'class-variance-authority';
+import { Avatar as AvatarPrimitive } from 'radix-ui';
 
 const avatarStatusVariants = cva('flex items-center rounded-full size-2 border-2 border-background', {
   variants: {
     variant: {
       online: 'bg-green-600',
-      offline: 'bg-zinc-600 dark:bg-zinc-300',
+      offline: 'bg-zinc-400 dark:bg-zinc-500',
       busy: 'bg-yellow-600',
       away: 'bg-blue-600',
     },
@@ -19,29 +19,26 @@ const avatarStatusVariants = cva('flex items-center rounded-full size-2 border-2
   },
 });
 
-// Base UI Avatar Root
-function AvatarRoot({ className, ...props }: React.ComponentProps<typeof Avatar.Root>) {
-  return <Avatar.Root data-slot="avatar" className={cn('relative flex h-10 w-10 shrink-0', className)} {...props} />;
-}
-
-// Base UI Avatar Image
-function AvatarImage({ className, ...props }: React.ComponentProps<typeof Avatar.Image>) {
+function Avatar({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Root>) {
   return (
-    <Avatar.Image
-      data-slot="avatar-image"
-      className={cn('aspect-square overflow-hidden h-full w-full rounded-full', className)}
-      {...props}
-    />
+    <AvatarPrimitive.Root data-slot="avatar" className={cn('relative flex shrink-0 size-10', className)} {...props} />
   );
 }
 
-// Base UI Avatar Fallback
-function AvatarFallback({ className, ...props }: React.ComponentProps<typeof Avatar.Fallback>) {
+function AvatarImage({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Image>) {
   return (
-    <Avatar.Fallback
+    <div className={cn('relative overflow-hidden rounded-full', className)}>
+      <AvatarPrimitive.Image data-slot="avatar-image" className={cn('aspect-square h-full w-full')} {...props} />
+    </div>
+  );
+}
+
+function AvatarFallback({ className, ...props }: React.ComponentProps<typeof AvatarPrimitive.Fallback>) {
+  return (
+    <AvatarPrimitive.Fallback
       data-slot="avatar-fallback"
       className={cn(
-        'flex h-full w-full items-center justify-center rounded-full bg-muted text-sm font-medium text-muted-foreground overflow-hidden',
+        'flex h-full w-full items-center justify-center rounded-full border border-border bg-accent text-accent-foreground text-xs',
         className,
       )}
       {...props}
@@ -67,5 +64,4 @@ function AvatarStatus({
   return <div data-slot="avatar-status" className={cn(avatarStatusVariants({ variant }), className)} {...props} />;
 }
 
-// Exports with proper naming to match Base UI pattern
-export { AvatarRoot as Avatar, AvatarImage, AvatarFallback, AvatarIndicator, AvatarStatus, avatarStatusVariants };
+export { Avatar, AvatarFallback, AvatarImage, AvatarIndicator, AvatarStatus, avatarStatusVariants };

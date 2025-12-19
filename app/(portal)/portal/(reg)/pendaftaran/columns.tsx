@@ -9,19 +9,19 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ChevronsUpDown, MoreHorizontal } from "lucide-react";
 import moment from "moment-timezone";
-import { Badge } from "@/components/ui/base-badge";
-import { Button } from "@/components/ui/base-button";
-import {
-    Menu,
-    MenuContent,
-    MenuGroup,
-    MenuGroupLabel,
-    MenuItem,
-    MenuSeparator,
-    MenuTrigger,
-} from "@/components/ui/base-menu";
-import { Progress } from "@/components/ui/base-progress";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+    DropdownMenu as Menu,
+    DropdownMenuContent as MenuContent,
+    DropdownMenuGroup as MenuGroup,
+    DropdownMenuLabel as MenuGroupLabel,
+    DropdownMenuItem as MenuItem,
+    DropdownMenuSeparator as MenuSeparator,
+    DropdownMenuTrigger as MenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { MOCK_SUBMISSION_CATEGORIES } from "@/mock-data";
 
@@ -78,17 +78,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "_id",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    ID
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        ID
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -110,17 +112,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "name",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    Nama
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        Nama
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -142,17 +146,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "categoryId",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    Kategori
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        Kategori
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -177,17 +183,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "academicYear",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    Tahun Ajaran
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        Tahun Ajaran
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -209,17 +217,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "quota",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    Kuota
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        Kuota
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -241,17 +251,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "status",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    Status
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        Status
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -294,17 +306,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "openDate",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    Tanggal Buka
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        Tanggal Buka
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -332,17 +346,19 @@ export const columns: ColumnDef<Submission>[] = [
         accessorKey: "closeDate",
         header: ({ column }) => (
             <Menu>
-                <MenuTrigger render={<Button size="sm" variant="ghost" />}>
-                    Tanggal Tutup
-                    {column.getIsSorted() ? (
-                        column.getIsSorted() === "asc" ? (
-                            <HugeiconsIcon icon={SortingAZ02Icon} />
+                <MenuTrigger asChild>
+                    <Button size="sm" variant="ghost">
+                        Tanggal Tutup
+                        {column.getIsSorted() ? (
+                            column.getIsSorted() === "asc" ? (
+                                <HugeiconsIcon icon={SortingAZ02Icon} />
+                            ) : (
+                                <HugeiconsIcon icon={SortingZA01Icon} />
+                            )
                         ) : (
-                            <HugeiconsIcon icon={SortingZA01Icon} />
-                        )
-                    ) : (
-                        <ChevronsUpDown />
-                    )}
+                            <ChevronsUpDown />
+                        )}
+                    </Button>
                 </MenuTrigger>
                 <MenuContent align="start">
                     <MenuGroup>
@@ -393,11 +409,11 @@ export const columns: ColumnDef<Submission>[] = [
         cell: ({ row }) => {
             return (
                 <Menu>
-                    <MenuTrigger
-                        render={<Button size="sm" mode="icon" variant="ghost" />}
-                    >
-                        <span className="sr-only">Open menu</span>
-                        <MoreHorizontal className="h-4 w-4" />
+                    <MenuTrigger asChild>
+                        <Button size="sm" mode="icon" variant="ghost">
+                            <span className="sr-only">Open menu</span>
+                            <MoreHorizontal className="h-4 w-4" />
+                        </Button>
                     </MenuTrigger>
                     <MenuContent>
                         <MenuGroup>

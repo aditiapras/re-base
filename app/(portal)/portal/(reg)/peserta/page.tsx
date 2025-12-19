@@ -8,25 +8,20 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useQueryState } from "nuqs";
-import { Button } from "@/components/ui/base-button";
-import {
-    Menu,
-    MenuContent,
-    MenuGroup,
-    MenuGroupLabel,
-    MenuRadioGroup,
-    MenuRadioItem,
-    MenuSeparator,
-    MenuTrigger,
-} from "@/components/ui/base-menu";
-import {
-    Tabs,
-    TabsContent,
-    TabsList,
-    TabsTrigger,
-} from "@/components/ui/base-tabs";
+import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
+import {
+    DropdownMenu as Menu,
+    DropdownMenuContent as MenuContent,
+    DropdownMenuGroup as MenuGroup,
+    DropdownMenuLabel as MenuGroupLabel,
+    DropdownMenuRadioGroup as MenuRadioGroup,
+    DropdownMenuRadioItem as MenuRadioItem,
+    DropdownMenuSeparator as MenuSeparator,
+    DropdownMenuTrigger as MenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { Input, InputWrapper } from "@/components/ui/input";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MOCK_PARTICIPANTS } from "@/mock-data";
 import { columns } from "./columns";
 
@@ -105,17 +100,13 @@ export default function Page() {
                     </InputWrapper>
                     <Menu>
                         <MenuTrigger
-                            render={
-                                <Button size="sm" variant="outline">
-                                    <HugeiconsIcon
-                                        icon={FilterIcon}
-                                        size={24}
-                                        strokeWidth={2}
-                                    />{" "}
-                                    Jenjang Pendidikan
-                                </Button>
-                            }
-                        />
+                            asChild
+                        >
+                            <Button size="sm" variant="outline">
+                                <HugeiconsIcon icon={FilterIcon} size={24} strokeWidth={2} />{" "}
+                                Jenjang Pendidikan
+                            </Button>
+                        </MenuTrigger>
                         <MenuContent sideOffset={4} className="">
                             <MenuGroup>
                                 <MenuGroupLabel>Jenjang Pendidikan</MenuGroupLabel>

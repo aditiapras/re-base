@@ -1,22 +1,26 @@
 "use client";
 
-import { SortingAZ01Icon, SortingAZ02Icon, SortingZA01Icon, } from "@hugeicons/core-free-icons";
+import {
+    SortingAZ01Icon,
+    SortingAZ02Icon,
+    SortingZA01Icon,
+} from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import type { ColumnDef } from "@tanstack/react-table";
 import { ChevronsUpDown, MoreHorizontal } from "lucide-react";
 import moment from "moment-timezone";
-import { Badge } from "@/components/ui/base-badge";
-import { Button } from "@/components/ui/base-button";
-import {
-    Menu,
-    MenuContent,
-    MenuGroup,
-    MenuGroupLabel,
-    MenuItem,
-    MenuSeparator,
-    MenuTrigger,
-} from "@/components/ui/base-menu";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+    DropdownMenu as Menu,
+    DropdownMenuContent as MenuContent,
+    DropdownMenuGroup as MenuGroup,
+    DropdownMenuLabel as MenuGroupLabel,
+    DropdownMenuItem as MenuItem,
+    DropdownMenuSeparator as MenuSeparator,
+    DropdownMenuTrigger as MenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 // Use mocked data type for now, or define a proper interface if shared
 export type Participant = {
@@ -88,9 +92,8 @@ export const columns: ColumnDef<Participant>[] = [
                         </MenuItem>
                     </MenuGroup>
                 </MenuContent>
-
             </Menu>
-        )
+        ),
     },
     {
         accessorKey: "name",
@@ -121,9 +124,8 @@ export const columns: ColumnDef<Participant>[] = [
                         </MenuItem>
                     </MenuGroup>
                 </MenuContent>
-
             </Menu>
-        )
+        ),
     },
     {
         accessorKey: "nik",
@@ -154,9 +156,8 @@ export const columns: ColumnDef<Participant>[] = [
                         </MenuItem>
                     </MenuGroup>
                 </MenuContent>
-
             </Menu>
-        )
+        ),
     },
     {
         accessorKey: "nisn",
@@ -187,9 +188,8 @@ export const columns: ColumnDef<Participant>[] = [
                         </MenuItem>
                     </MenuGroup>
                 </MenuContent>
-
             </Menu>
-        )
+        ),
     },
     {
         accessorKey: "gender",
@@ -221,7 +221,7 @@ export const columns: ColumnDef<Participant>[] = [
                     </MenuGroup>
                 </MenuContent>
             </Menu>
-        )
+        ),
     },
     {
         accessorKey: "submissionStatus",
@@ -252,7 +252,6 @@ export const columns: ColumnDef<Participant>[] = [
                         </MenuItem>
                     </MenuGroup>
                 </MenuContent>
-
             </Menu>
         ),
         cell: ({ row }) => {
@@ -306,7 +305,6 @@ export const columns: ColumnDef<Participant>[] = [
                         </MenuItem>
                     </MenuGroup>
                 </MenuContent>
-
             </Menu>
         ),
         cell: ({ row }) => {
@@ -353,13 +351,14 @@ export const columns: ColumnDef<Participant>[] = [
                         </MenuItem>
                     </MenuGroup>
                 </MenuContent>
-
             </Menu>
         ),
         cell: ({ row }) => {
             const createdAt = row.getValue("createdAt") as string;
             return (
-                <p className="text-sm px-2">{moment(createdAt).format("DD MMM YYYY, HH:mm")}</p>
+                <p className="text-sm px-2">
+                    {moment(createdAt).format("DD MMM YYYY, HH:mm")}
+                </p>
             );
         },
     },

@@ -9,7 +9,7 @@ import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "@/components/ui/base-avatar";
+} from "@/components/ui/avatar";
 import {
   SidebarInset,
   SidebarProvider,

@@ -14,29 +14,29 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "@/components/ui/base-dialog";
+} from "@/components/ui/dialog";
 import {
-    Menu,
-    MenuContent,
-    MenuGroup,
-    MenuGroupLabel,
-    MenuRadioGroup,
-    MenuRadioItem,
-    MenuSeparator,
-    MenuTrigger,
-} from "@/components/ui/base-menu";
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuLabel,
+    DropdownMenuRadioGroup,
+    DropdownMenuRadioItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "@/components/ui/base-select";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { MOCK_SUBMISSION_CATEGORIES } from "@/mock-data";
-import { Button } from "../ui/base-button";
+import { Button } from "../ui/button";
 
 export function CustomMenu() {
     const pathname = usePathname();
@@ -51,43 +51,46 @@ export function CustomMenu() {
             { value: "SMA/MA", label: "SMA/MA" },
         ];
         return (
-            <Menu>
-                <MenuTrigger
-                    render={
-                        <Button size="xs" variant="outline">
-                            <HugeiconsIcon icon={FilterIcon} size={24} strokeWidth={2} />{" "}
-                            Jenjang Pendidikan
-                        </Button>
-                    }
-                />
-                <MenuContent sideOffset={4} className="">
-                    <MenuGroup>
-                        <MenuGroupLabel>Jenjang Pendidikan</MenuGroupLabel>
-                        <MenuSeparator />
-                        <MenuRadioGroup value={jenjang || "all"}>
+            <DropdownMenu>
+                <DropdownMenuTrigger
+                    asChild>
+                    <Button size="xs" variant="outline">
+                        <HugeiconsIcon icon={FilterIcon} size={24} strokeWidth={2} />{" "}
+                        Jenjang Pendidikan
+                    </Button>
+                </DropdownMenuTrigger>
+
+
+                <DropdownMenuContent sideOffset={4} className="">
+                    <DropdownMenuGroup>
+                        <DropdownMenuLabel>Jenjang Pendidikan</DropdownMenuLabel>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuRadioGroup value={jenjang || "all"}>
                             {items.map((item) => (
-                                <MenuRadioItem
+                                <DropdownMenuRadioItem
                                     className="text-xs"
                                     key={item.value}
                                     value={item.value}
                                     onClick={() => setJenjang(item.value)}
                                 >
                                     {item.label}
-                                </MenuRadioItem>
+                                </DropdownMenuRadioItem>
                             ))}
-                        </MenuRadioGroup>
-                    </MenuGroup>
-                </MenuContent>
-            </Menu>
+                        </DropdownMenuRadioGroup>
+                    </DropdownMenuGroup>
+                </DropdownMenuContent>
+            </DropdownMenu>
         );
     }
 
     if (pathname.includes("pendaftaran")) {
         return (
             <Dialog>
-                <DialogTrigger render={<Button size="sm" variant="primary"></Button>}>
-                    <Pen className="h-4 w-4 mr-2" />
-                    Buat Pendaftaran
+                <DialogTrigger asChild>
+                    <Button size="sm" variant="primary">
+                        <Pen className="h-4 w-4 mr-2" />
+                        Buat Pendaftaran
+                    </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[600px]">
                     <DialogHeader>
@@ -109,7 +112,12 @@ export function CustomMenu() {
                         <div className="grid grid-cols-2 gap-4">
                             <div className="flex flex-col gap-2 col-span-2">
                                 <Label htmlFor="name">Nama Pendaftaran</Label>
-                                <Input id="name" name="name" placeholder="Contoh: PPDB 2024" required />
+                                <Input
+                                    id="name"
+                                    name="name"
+                                    placeholder="Contoh: PPDB 2024"
+                                    required
+                                />
                             </div>
                         </div>
                         <div className="grid grid-cols-2 gap-4">
@@ -137,14 +145,25 @@ export function CustomMenu() {
 
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="academicYear">Tahun Ajaran</Label>
-                                <Input id="academicYear" name="academicYear" placeholder="2024/2025" required />
+                                <Input
+                                    id="academicYear"
+                                    name="academicYear"
+                                    placeholder="2024/2025"
+                                    required
+                                />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-3 gap-4">
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="quota">Kuota</Label>
-                                <Input id="quota" name="quota" type="number" placeholder="100" required />
+                                <Input
+                                    id="quota"
+                                    name="quota"
+                                    type="number"
+                                    placeholder="100"
+                                    required
+                                />
                             </div>
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="openDate">Tanggal Buka</Label>
@@ -158,12 +177,19 @@ export function CustomMenu() {
 
                         <div className="flex flex-col gap-2">
                             <Label htmlFor="description">Deskripsi</Label>
-                            <Textarea id="description" name="description" placeholder="Deskripsi pendaftaran..." />
+                            <Textarea
+                                id="description"
+                                name="description"
+                                placeholder="Deskripsi pendaftaran..."
+                            />
                         </div>
 
                         <DialogFooter>
-                            <DialogClose render={<Button type="button" variant="outline" />}>
-                                Cancel</DialogClose>
+                            <DialogClose asChild>
+                                <Button type="button" variant="outline">
+                                    Cancel
+                                </Button>
+                            </DialogClose>
                             <Button type="submit">Simpan</Button>
                         </DialogFooter>
                     </form>
