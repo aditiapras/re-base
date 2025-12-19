@@ -5,11 +5,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { AppSidebar } from "@/components/sidebar/app-sidebar";
 import { Breadcrumbs } from "@/components/sidebar/breadcrumbs";
 import { CustomMenu } from "@/components/sidebar/custom-menu";
-import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-} from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   SidebarInset,
   SidebarProvider,
@@ -47,7 +43,7 @@ export default function RootLayout({
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-              <header className="flex h-[54px] px-4 shrink-0 border-b items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-[54px]">
+              <header className="flex h-[54px] bg-background sticky top-0 px-4 shrink-0 border-b items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-[54px]">
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center gap-2">
                     <SidebarTrigger />
