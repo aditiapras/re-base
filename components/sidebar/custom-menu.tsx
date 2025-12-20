@@ -1,10 +1,11 @@
 "use client";
 
-import { FilterIcon } from "@hugeicons/core-free-icons";
+import { FileAddIcon, FilterIcon } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { Pen } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useQueryState } from "nuqs";
+import { Suspense } from "react";
 import {
     Dialog,
     DialogClose,
@@ -38,7 +39,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { MOCK_SUBMISSION_CATEGORIES } from "@/mock-data";
 import { Button } from "../ui/button";
 
-export function CustomMenu() {
+function CustomMenuContent() {
     const pathname = usePathname();
     const [jenjang, setJenjang] = useQueryState("jenjang");
 
@@ -87,8 +88,8 @@ export function CustomMenu() {
         return (
             <Dialog>
                 <DialogTrigger asChild>
-                    <Button size="sm" variant="primary">
-                        <Pen className="h-4 w-4 mr-2" />
+                    <Button size="xs" variant="primary">
+                        <HugeiconsIcon icon={FileAddIcon} strokeWidth={2} />
                         Buat Pendaftaran
                     </Button>
                 </DialogTrigger>
@@ -153,7 +154,6 @@ export function CustomMenu() {
                                 />
                             </div>
                         </div>
-
                         <div className="grid grid-cols-3 gap-4">
                             <div className="flex flex-col gap-2">
                                 <Label htmlFor="quota">Kuota</Label>
@@ -217,4 +217,12 @@ export function CustomMenu() {
     }
 
     return null;
+}
+
+export function CustomMenu() {
+    return (
+        <Suspense fallback={null}>
+            <CustomMenuContent />
+        </Suspense>
+    );
 }

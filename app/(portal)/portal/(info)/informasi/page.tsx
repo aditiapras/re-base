@@ -7,12 +7,13 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useQueryState } from "nuqs";
+import { Suspense } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import { Input, InputWrapper } from "@/components/ui/input";
 import { MOCK_POSTS } from "@/mock-data";
 import { columns } from "./columns";
 
-export default function Page() {
+function InformasiPage() {
   const [search, setSearch] = useQueryState("search");
 
   // Filter for Information posts only
@@ -78,5 +79,13 @@ export default function Page() {
         />
       </div>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <InformasiPage />
+    </Suspense>
   );
 }

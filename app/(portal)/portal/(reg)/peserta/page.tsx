@@ -8,6 +8,7 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useQueryState } from "nuqs";
+import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
 import {
@@ -25,7 +26,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MOCK_PARTICIPANTS } from "@/mock-data";
 import { columns } from "./columns";
 
-export default function Page() {
+function PesertaPage() {
   const [tab, setTab] = useQueryState("tabs");
   const [jenjang, setJenjang] = useQueryState("jenjang");
   const [search, setSearch] = useQueryState("search");
@@ -154,5 +155,13 @@ export default function Page() {
         </TabsContent>
       </Tabs>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PesertaPage />
+    </Suspense>
   );
 }

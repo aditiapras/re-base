@@ -9,9 +9,11 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useQueryState } from "nuqs";
+import { Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { DataTable } from "@/components/ui/data-table";
 import { Input, InputWrapper } from "@/components/ui/input";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   MOCK_PARTICIPANTS,
@@ -19,9 +21,8 @@ import {
   MOCK_SUBMISSIONS,
 } from "@/mock-data";
 import { columns } from "./columns";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-export default function Page() {
+function PendaftaranPage() {
   const [tab, setTab] = useQueryState("tabs");
   const [search, setSearch] = useQueryState("search");
 
@@ -33,10 +34,10 @@ export default function Page() {
   // Calculate Stats
   const totalSubmissions = MOCK_SUBMISSIONS.length;
   const openSubmissions = MOCK_SUBMISSIONS.filter(
-    (s) => s.status === "OPEN"
+    (s) => s.status === "OPEN",
   ).length;
   const closedSubmissions = MOCK_SUBMISSIONS.filter(
-    (s) => s.status === "CLOSED"
+    (s) => s.status === "CLOSED",
   ).length;
   const totalParticipants = MOCK_PARTICIPANTS.length; // From mock-data as requested
 
@@ -48,7 +49,7 @@ export default function Page() {
     // Find category ID by mock category slug/name matching the tab
     // In mock data: slugs are "tk", "sd", "smp", "sma"
     const category = MOCK_SUBMISSION_CATEGORIES.find(
-      (c) => c.slug === currentTab
+      (c) => c.slug === currentTab,
     );
     if (!category) return MOCK_SUBMISSIONS;
 
@@ -157,5 +158,13 @@ export default function Page() {
         </TabsContent>
       </Tabs>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <PendaftaranPage />
+    </Suspense>
   );
 }

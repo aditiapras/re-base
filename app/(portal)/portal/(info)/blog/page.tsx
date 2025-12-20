@@ -7,12 +7,13 @@ import {
 } from "@hugeicons/core-free-icons";
 import { HugeiconsIcon } from "@hugeicons/react";
 import { useQueryState } from "nuqs";
+import { Suspense } from "react";
 import { DataTable } from "@/components/ui/data-table";
 import { Input, InputWrapper } from "@/components/ui/input";
 import { MOCK_POSTS } from "@/mock-data";
 import { columns } from "./columns";
 
-export default function Page() {
+function BlogPage() {
     const [search, setSearch] = useQueryState("search");
 
     // Filter for Blog posts only
@@ -24,6 +25,7 @@ export default function Page() {
     const totalDraft = blogPosts.filter((p) => !p.isPublished).length;
 
     return (
+        // <Suspense>
         <div className="flex flex-1 flex-col">
             <div className="border-b grid grid-cols-3">
                 <div className="flex flex-col gap-4 p-4 border-r">
@@ -76,5 +78,12 @@ export default function Page() {
                 />
             </div>
         </div>
+        // </Suspense>
     );
+}
+
+export default function Page() {
+    return (<Suspense fallback={<div>Loading...</div>}>
+        <BlogPage />
+    </Suspense>)
 }

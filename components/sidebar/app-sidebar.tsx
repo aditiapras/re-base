@@ -5,7 +5,7 @@ import { HugeiconsIcon } from "@hugeicons/react";
 import type * as React from "react";
 import { SidebarNav } from "@/components/sidebar/sidebar-nav";
 import { Sidebar, SidebarContent, SidebarRail } from "@/components/ui/sidebar";
-import { menu } from "@/config/sidebar-config";
+import { menu, menuInformasi, menuSubmission } from "@/config/sidebar-config";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     return (
@@ -21,6 +21,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             </div>
             <SidebarContent>
                 <SidebarNav menu={menu} />
+                <SidebarNav menu={menuInformasi} />
+                <SidebarNav menu={menuSubmission} />
             </SidebarContent>
             <SidebarRail />
         </Sidebar>

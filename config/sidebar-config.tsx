@@ -10,6 +10,12 @@ export const menu =
             url: "/portal",
             icon: <HugeiconsIcon icon={Home01Icon} strokeWidth={2} size="24" />,
         },
+    ],
+};
+
+export const menuInformasi = {
+    title: "Informasi",
+    items: [
         {
             name: "Informasi",
             url: "/portal/informasi",
@@ -25,6 +31,12 @@ export const menu =
             url: "/portal/blog",
             icon: <HugeiconsIcon icon={NewsIcon} strokeWidth={2} size="24" />,
         },
+    ],
+}
+
+export const menuSubmission = {
+    title: "Penerimaan Siswa Baru",
+    items: [
         {
             name: "Pendaftaran",
             url: "/portal/pendaftaran",
@@ -35,5 +47,5 @@ export const menu =
             url: "/portal/peserta",
             icon: <HugeiconsIcon icon={StudentsIcon} strokeWidth={2} size="24" />,
         },
-    ],
-};
+    ]
+}
