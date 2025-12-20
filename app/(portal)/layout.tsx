@@ -43,7 +43,7 @@ export default function RootLayout({
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>
-              <header className="flex h-[54px] bg-background sticky top-0 px-4 shrink-0 border-b items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-[54px]">
+              <header className="flex px-4 border-b sticky top-0 bg-background h-[54px] shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-[54px]">
                 <div className="flex items-center justify-between w-full">
                   <div className="flex items-center gap-2">
                     <SidebarTrigger />

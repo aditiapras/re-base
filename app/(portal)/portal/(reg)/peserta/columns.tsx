@@ -56,6 +56,7 @@ import {
 } from "@/components/ui/sheet";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { MOCK_ADDRESSES, MOCK_EDUCATIONS, MOCK_PARENTS } from "@/mock-data";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 // Use mocked data type for now, or define a proper interface if shared
 export type Participant = {
@@ -131,25 +132,25 @@ const participantAddressMap = new Map<string, ParticipantAddress>(
   (MOCK_ADDRESSES as ParticipantAddress[]).map((address) => [
     address.participantId,
     address,
-  ]),
+  ])
 );
 
 const participantEducationMap = new Map<string, ParticipantEducation>(
   (MOCK_EDUCATIONS as ParticipantEducation[]).map((education) => [
     education.participantId,
     education,
-  ]),
+  ])
 );
 
 const participantParentMap = new Map<string, ParticipantParent>(
   (MOCK_PARENTS as ParticipantParent[]).map((parent) => [
     parent.participantId,
     parent,
-  ]),
+  ])
 );
 
 const formatParticipantValue = (
-  value: string | number | boolean | null | undefined,
+  value: string | number | boolean | null | undefined
 ) => {
   if (value === null || value === undefined || value === "") {
     return "-";
@@ -317,7 +318,9 @@ export const columns: ColumnDef<Participant>[] = [
         </MenuContent>
       </Menu>
     ),
+    cell: ({ row }) => <p className="truncate">{row.original.submissionId}</p>,
   },
+
   {
     accessorKey: "name",
     header: ({ column }) => (
@@ -397,8 +400,7 @@ export const columns: ColumnDef<Participant>[] = [
                     <DialogHeader>
                       <DialogTitle>Tolak Verifikasi</DialogTitle>
                       <DialogDescription>
-                        Apakah anda yakin ingin menolak verifikasi peserta
-                        ini?
+                        Apakah anda yakin ingin menolak verifikasi peserta ini?
                       </DialogDescription>
                     </DialogHeader>
                     <DialogBody>
@@ -437,10 +439,7 @@ export const columns: ColumnDef<Participant>[] = [
                       <DialogClose asChild>
                         <Button variant="outline">Batal</Button>
                       </DialogClose>
-                      <Button
-                        variant="outline"
-                        className="text-destructive"
-                      >
+                      <Button variant="outline" className="text-destructive">
                         Tolak Verifikasi
                       </Button>
                     </DialogFooter>
@@ -512,11 +511,12 @@ export const columns: ColumnDef<Participant>[] = [
               </div>
             </TabsContent>
             <TabsContent value="address">
-              <div className="flex flex-col gap-4">
+              <ScrollArea className="flex flex-col gap-4">
+                {/* <div className="flex flex-col gap-4"> */}
                 <p className="text-sm font-semibold">Alamat</p>
                 <div className="grid grid-cols-4 gap-8">
                   {buildAddressItems(
-                    participantAddressMap.get(row.original._id),
+                    participantAddressMap.get(row.original._id)
                   ).map((item) => (
                     <div
                       key={item.label}
@@ -529,16 +529,15 @@ export const columns: ColumnDef<Participant>[] = [
                     </div>
                   ))}
                 </div>
-              </div>
+                {/* </div> */}
+              </ScrollArea>
             </TabsContent>
             <TabsContent value="parent">
               <div className="flex flex-col gap-4">
                 {/* <p className="text-sm font-semibold">Data Orang Tua</p> */}
                 <div className="grid grid-cols-2 gap-8">
                   {Object.entries(
-                    buildParentItems(
-                      participantParentMap.get(row.original._id),
-                    ),
+                    buildParentItems(participantParentMap.get(row.original._id))
                   ).map(([key, items]) => (
                     <div key={key} className="col-span-1 space-y-4">
                       <p className="text-sm font-semibold">
@@ -569,7 +568,7 @@ export const columns: ColumnDef<Participant>[] = [
                 <p className="text-sm font-semibold">Riwayat Pendidikan</p>
                 <div className="grid grid-cols-4 gap-8">
                   {buildEducationItems(
-                    participantEducationMap.get(row.original._id),
+                    participantEducationMap.get(row.original._id)
                   ).map((item) => (
                     <div
                       key={item.label}
@@ -593,9 +592,7 @@ export const columns: ColumnDef<Participant>[] = [
                   </div>
                   <div className="flex w-full items-center justify-between">
                     <div className="flex flex-col">
-                      <p className="text-sm font-semibold">
-                        Surat Keterangan
-                      </p>
+                      <p className="text-sm font-semibold">Surat Keterangan</p>
                       <p className="text-xs text-muted-foreground">1.4 MB</p>
                     </div>
                     <Button variant="outline" size="sm">
@@ -609,9 +606,7 @@ export const columns: ColumnDef<Participant>[] = [
                   </div>
                   <div className="flex w-full items-center justify-between">
                     <div className="flex flex-col">
-                      <p className="text-sm font-semibold">
-                        Surat Keterangan
-                      </p>
+                      <p className="text-sm font-semibold">Surat Keterangan</p>
                       <p className="text-xs text-muted-foreground">1.4 MB</p>
                     </div>
                     <Button variant="outline" size="sm">
@@ -625,9 +620,7 @@ export const columns: ColumnDef<Participant>[] = [
                   </div>
                   <div className="flex w-full items-center justify-between">
                     <div className="flex flex-col">
-                      <p className="text-sm font-semibold">
-                        Surat Keterangan
-                      </p>
+                      <p className="text-sm font-semibold">Surat Keterangan</p>
                       <p className="text-xs text-muted-foreground">1.4 MB</p>
                     </div>
                     <Button variant="outline" size="sm">
@@ -641,9 +634,7 @@ export const columns: ColumnDef<Participant>[] = [
                   </div>
                   <div className="flex w-full items-center justify-between">
                     <div className="flex flex-col">
-                      <p className="text-sm font-semibold">
-                        Surat Keterangan
-                      </p>
+                      <p className="text-sm font-semibold">Surat Keterangan</p>
                       <p className="text-xs text-muted-foreground">1.4 MB</p>
                     </div>
                     <Button variant="outline" size="sm">
@@ -654,7 +645,6 @@ export const columns: ColumnDef<Participant>[] = [
               </div>
             </TabsContent>
           </Tabs>
-
         </SheetContent>
       </Sheet>
     ),

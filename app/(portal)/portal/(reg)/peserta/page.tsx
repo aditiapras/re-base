@@ -46,7 +46,7 @@ function PesertaPage() {
   // But for "all" we pass everything.
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex w-full flex-col flex-1">
       <div className="border-b grid grid-cols-4">
         <div className="flex flex-col gap-4 p-4 border-r">
           <p className="text-sm font-semibold">Total Peserta</p>
@@ -127,31 +127,25 @@ function PesertaPage() {
           </Menu>
         </div>
         <TabsContent value="all">
-          <div className="flex flex-1 flex-col">
-            <DataTable
-              columns={columns}
-              data={MOCK_PARTICIPANTS}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={MOCK_PARTICIPANTS}
+            globalFilter={search || ""}
+          />
         </TabsContent>
         <TabsContent value="verified">
-          <div className="flex flex-1 flex-col px-4">
-            <DataTable
-              columns={columns}
-              data={MOCK_PARTICIPANTS.filter((p) => p.isVerified)}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={MOCK_PARTICIPANTS.filter((p) => p.isVerified)}
+            globalFilter={search || ""}
+          />
         </TabsContent>
         <TabsContent value="unverified">
-          <div className="flex flex-1 flex-col px-4">
-            <DataTable
-              columns={columns}
-              data={MOCK_PARTICIPANTS.filter((p) => !p.isVerified)}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={MOCK_PARTICIPANTS.filter((p) => !p.isVerified)}
+            globalFilter={search || ""}
+          />
         </TabsContent>
       </Tabs>
     </div>

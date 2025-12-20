@@ -34,10 +34,10 @@ function PendaftaranPage() {
   // Calculate Stats
   const totalSubmissions = MOCK_SUBMISSIONS.length;
   const openSubmissions = MOCK_SUBMISSIONS.filter(
-    (s) => s.status === "OPEN",
+    (s) => s.status === "OPEN"
   ).length;
   const closedSubmissions = MOCK_SUBMISSIONS.filter(
-    (s) => s.status === "CLOSED",
+    (s) => s.status === "CLOSED"
   ).length;
   const totalParticipants = MOCK_PARTICIPANTS.length; // From mock-data as requested
 
@@ -49,7 +49,7 @@ function PendaftaranPage() {
     // Find category ID by mock category slug/name matching the tab
     // In mock data: slugs are "tk", "sd", "smp", "sma"
     const category = MOCK_SUBMISSION_CATEGORIES.find(
-      (c) => c.slug === currentTab,
+      (c) => c.slug === currentTab
     );
     if (!category) return MOCK_SUBMISSIONS;
 
@@ -59,7 +59,7 @@ function PendaftaranPage() {
   const currentData = getFilteredData(tab || "all");
 
   return (
-    <div className="flex flex-1 flex-col">
+    <div className="flex w-full flex-col">
       <div className="border-b grid grid-cols-4">
         <div className="flex flex-col gap-4 p-4 border-r">
           <p className="text-sm font-semibold">Total Pendaftaran</p>
@@ -112,49 +112,39 @@ function PendaftaranPage() {
         </div>
 
         <TabsContent value="all">
-          <div className="flex flex-1 flex-col">
-            <DataTable
-              columns={columns}
-              data={currentData}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={currentData}
+            globalFilter={search || ""}
+          />
         </TabsContent>
         <TabsContent value="tk">
-          <div className="flex flex-1 flex-col">
-            <DataTable
-              columns={columns}
-              data={currentData}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={currentData}
+            globalFilter={search || ""}
+          />
         </TabsContent>
         <TabsContent value="sd">
-          <div className="flex flex-1 flex-col">
-            <DataTable
-              columns={columns}
-              data={currentData}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={currentData}
+            globalFilter={search || ""}
+          />
         </TabsContent>
         <TabsContent value="smp">
-          <div className="flex flex-1 flex-col">
-            <DataTable
-              columns={columns}
-              data={currentData}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={currentData}
+            globalFilter={search || ""}
+          />
         </TabsContent>
         <TabsContent value="sma">
-          <div className="flex flex-1 flex-col">
-            <DataTable
-              columns={columns}
-              data={currentData}
-              globalFilter={search || ""}
-            />
-          </div>
+          <DataTable
+            columns={columns}
+            data={currentData}
+            globalFilter={search || ""}
+          />
         </TabsContent>
       </Tabs>
     </div>
@@ -163,7 +153,13 @@ function PendaftaranPage() {
 
 export default function Page() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div className="w-full flex flex-1 items-center justify-center">
+          Loading...
+        </div>
+      }
+    >
       <PendaftaranPage />
     </Suspense>
   );

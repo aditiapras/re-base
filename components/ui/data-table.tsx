@@ -23,7 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ScrollArea } from "./scroll-area";
+import { ScrollArea, ScrollBar } from "./scroll-area";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -70,65 +70,72 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <ScrollArea>
-      <Table>
-        <TableHeader className="bg-neutral-50">
-          {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
-              {headerGroup.headers.map((header) => {
-                return (
-                  <TableHead
-                    className="h-10 border-t text-neutral-600 text-[13px]"
-                    key={header.id}
-                  >
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                          header.column.columnDef.header,
-                          header.getContext()
-                        )}
-                  </TableHead>
-                );
-              })}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-                className={`!border-l-2 ${row.getIsSelected() ? "!border-l-primary" : "!border-l-transparent"}`}
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell className="py-2 text-sm border-b" key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
-                ))}
+    <div>
+      <ScrollArea className="flex flex-col w-full max-w-[calc(100vw-16rem)]">
+        <Table>
+          <TableHeader className="bg-neutral-50">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <TableRow key={headerGroup.id}>
+                {headerGroup.headers.map((header) => {
+                  return (
+                    <TableHead
+                      className="h-10 border-t text-neutral-600 text-[13px]"
+                      key={header.id}
+                    >
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                    </TableHead>
+                  );
+                })}
               </TableRow>
-            ))
-          ) : (
-            <TableRow>
-              <TableCell
-                colSpan={columns.length}
-                className="h-24 text-center border-b"
-              >
-                <span className="flex items-center gap-2 justify-center">
-                  <HugeiconsIcon icon={NoteRemoveIcon} />
-                  No results.
-                </span>
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
-      </Table>
+            ))}
+          </TableHeader>
+          <TableBody>
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                  className={`!border-l-2 ${row.getIsSelected() ? "!border-l-primary" : "!border-l-transparent"}`}
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell className="py-2 text-sm border-b" key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center border-b"
+                >
+                  <span className="flex items-center gap-2 justify-center">
+                    <HugeiconsIcon icon={NoteRemoveIcon} />
+                    No results.
+                  </span>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
       <div className="flex items-center justify-end space-x-2 py-4 px-4">
         <div className="flex-1 text-xs text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{" "}
           {table.getFilteredRowModel().rows.length} row(s) selected.
         </div>
       </div>
-    </ScrollArea>
+    </div>
   );
 }

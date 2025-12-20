@@ -21,9 +21,8 @@ import {
   DropdownMenuSeparator as MenuSeparator,
   DropdownMenuTrigger as MenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Progress } from "@/components/ui/progress";
-import { cn } from "@/lib/utils";
 import { MOCK_SUBMISSION_CATEGORIES } from "@/mock-data";
+import { cn } from "@/lib/utils";
 
 // Type definition based on mock data
 export type Submission = {
@@ -74,41 +73,41 @@ export const columns: ColumnDef<Submission>[] = [
     enableSorting: false,
     enableHiding: false,
   },
-  {
-    accessorKey: "_id",
-    header: ({ column }) => (
-      <Menu>
-        <MenuTrigger asChild>
-          <Button size="sm" variant="ghost">
-            ID
-            {column.getIsSorted() ? (
-              column.getIsSorted() === "asc" ? (
-                <HugeiconsIcon icon={SortingAZ02Icon} />
-              ) : (
-                <HugeiconsIcon icon={SortingZA01Icon} />
-              )
-            ) : (
-              <ChevronsUpDown />
-            )}
-          </Button>
-        </MenuTrigger>
-        <MenuContent align="start">
-          <MenuGroup>
-            <MenuItem onClick={() => column.toggleSorting(false)}>
-              <HugeiconsIcon icon={SortingAZ02Icon} /> Asc
-            </MenuItem>
-            <MenuItem onClick={() => column.toggleSorting(true)}>
-              <HugeiconsIcon icon={SortingZA01Icon} /> Desc
-            </MenuItem>
-            <MenuItem onClick={() => column.clearSorting()}>
-              <HugeiconsIcon icon={SortingAZ01Icon} /> Default
-            </MenuItem>
-          </MenuGroup>
-        </MenuContent>
-      </Menu>
-    ),
-    cell: ({ row }) => <p className="line-clamp-1">{row.getValue("_id")}</p>,
-  },
+  // {
+  //   accessorKey: "_id",
+  //   header: ({ column }) => (
+  //     <Menu>
+  //       <MenuTrigger asChild>
+  //         <Button size="sm" variant="ghost">
+  //           ID
+  //           {column.getIsSorted() ? (
+  //             column.getIsSorted() === "asc" ? (
+  //               <HugeiconsIcon icon={SortingAZ02Icon} />
+  //             ) : (
+  //               <HugeiconsIcon icon={SortingZA01Icon} />
+  //             )
+  //           ) : (
+  //             <ChevronsUpDown />
+  //           )}
+  //         </Button>
+  //       </MenuTrigger>
+  //       <MenuContent align="start">
+  //         <MenuGroup>
+  //           <MenuItem onClick={() => column.toggleSorting(false)}>
+  //             <HugeiconsIcon icon={SortingAZ02Icon} /> Asc
+  //           </MenuItem>
+  //           <MenuItem onClick={() => column.toggleSorting(true)}>
+  //             <HugeiconsIcon icon={SortingZA01Icon} /> Desc
+  //           </MenuItem>
+  //           <MenuItem onClick={() => column.clearSorting()}>
+  //             <HugeiconsIcon icon={SortingAZ01Icon} /> Default
+  //           </MenuItem>
+  //         </MenuGroup>
+  //       </MenuContent>
+  //     </Menu>
+  //   ),
+  //   cell: ({ row }) => <p className="truncate">{row.getValue("_id")}</p>,
+  // },
   {
     accessorKey: "name",
     header: ({ column }) => (
@@ -142,7 +141,7 @@ export const columns: ColumnDef<Submission>[] = [
         </MenuContent>
       </Menu>
     ),
-    cell: ({ row }) => <p className="line-clamp-1">{row.getValue("name")}</p>,
+    cell: ({ row }) => <p className="truncate">{row.getValue("name")}</p>,
   },
   {
     accessorKey: "categoryId",

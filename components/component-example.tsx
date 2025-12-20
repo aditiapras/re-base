@@ -1,8 +1,11 @@
-"use client";
+"use client"
 
-import * as React from "react";
+import * as React from "react"
 
-import { Example, ExampleWrapper } from "@/components/example";
+import {
+  Example,
+  ExampleWrapper,
+} from "@/components/example"
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,11 +14,12 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
+  AlertDialogMedia,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+} from "@/components/ui/alert-dialog"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
 import {
   Card,
   CardAction,
@@ -24,7 +28,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@/components/ui/card"
 import {
   Combobox,
   ComboboxContent,
@@ -32,7 +36,7 @@ import {
   ComboboxInput,
   ComboboxItem,
   ComboboxList,
-} from "@/components/ui/combobox";
+} from "@/components/ui/combobox"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -49,9 +53,9 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/dropdown-menu"
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import { Input } from "@/components/ui/input"
 import {
   Select,
   SelectContent,
@@ -59,39 +63,10 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
-import { HugeiconsIcon } from "@hugeicons/react";
-import {
-  PlusSignIcon,
-  BluetoothIcon,
-  MoreVerticalCircle01Icon,
-  FileIcon,
-  FolderIcon,
-  FolderOpenIcon,
-  CodeIcon,
-  MoreHorizontalCircle01Icon,
-  SearchIcon,
-  FloppyDiskIcon,
-  DownloadIcon,
-  EyeIcon,
-  LayoutIcon,
-  PaintBoardIcon,
-  SunIcon,
-  MoonIcon,
-  ComputerIcon,
-  UserIcon,
-  CreditCardIcon,
-  SettingsIcon,
-  KeyboardIcon,
-  LanguageCircleIcon,
-  NotificationIcon,
-  MailIcon,
-  ShieldIcon,
-  HelpCircleIcon,
-  File01Icon,
-  LogoutIcon,
-} from "@hugeicons/core-free-icons";
+} from "@/components/ui/select"
+import { Textarea } from "@/components/ui/textarea"
+import { HugeiconsIcon } from "@hugeicons/react"
+import { PlusSignIcon, BluetoothIcon, MoreVerticalCircle01Icon, FileIcon, FolderIcon, FolderOpenIcon, CodeIcon, MoreHorizontalCircle01Icon, SearchIcon, FloppyDiskIcon, DownloadIcon, EyeIcon, LayoutIcon, PaintBoardIcon, SunIcon, MoonIcon, ComputerIcon, UserIcon, CreditCardIcon, SettingsIcon, KeyboardIcon, LanguageCircleIcon, NotificationIcon, MailIcon, ShieldIcon, HelpCircleIcon, File01Icon, LogoutIcon } from "@hugeicons/core-free-icons"
 
 export function ComponentExample() {
   return (
@@ -99,7 +74,7 @@ export function ComponentExample() {
       <CardExample />
       <FormExample />
     </ExampleWrapper>
-  );
+  )
 }
 
 function CardExample() {
@@ -125,16 +100,15 @@ function CardExample() {
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button>
-                <HugeiconsIcon
-                  icon={PlusSignIcon}
-                  strokeWidth={2}
-                  data-icon="inline-start"
-                />
+                <HugeiconsIcon icon={PlusSignIcon} strokeWidth={2} data-icon="inline-start" />
                 Show Dialog
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent>
+            <AlertDialogContent size="sm">
               <AlertDialogHeader>
+                <AlertDialogMedia>
+                  <HugeiconsIcon icon={BluetoothIcon} strokeWidth={2} />
+                </AlertDialogMedia>
                 <AlertDialogTitle>Allow accessory to connect?</AlertDialogTitle>
                 <AlertDialogDescription>
                   Do you want to allow the USB accessory to connect to this
@@ -153,7 +127,7 @@ function CardExample() {
         </CardFooter>
       </Card>
     </Example>
-  );
+  )
 }
 
 const frameworks = [
@@ -162,15 +136,15 @@ const frameworks = [
   "Nuxt.js",
   "Remix",
   "Astro",
-] as const;
+] as const
 
 function FormExample() {
   const [notifications, setNotifications] = React.useState({
     email: true,
     sms: false,
     push: true,
-  });
-  const [theme, setTheme] = React.useState("light");
+  })
+  const [theme, setTheme] = React.useState("light")
 
   return (
     <Example title="Form">
@@ -182,10 +156,7 @@ function FormExample() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <HugeiconsIcon
-                    icon={MoreVerticalCircle01Icon}
-                    strokeWidth={2}
-                  />
+                  <HugeiconsIcon icon={MoreVerticalCircle01Icon} strokeWidth={2} />
                   <span className="sr-only">More options</span>
                 </Button>
               </DropdownMenuTrigger>
@@ -221,26 +192,17 @@ function FormExample() {
                           </DropdownMenuItem>
                           <DropdownMenuSub>
                             <DropdownMenuSubTrigger>
-                              <HugeiconsIcon
-                                icon={MoreHorizontalCircle01Icon}
-                                strokeWidth={2}
-                              />
+                              <HugeiconsIcon icon={MoreHorizontalCircle01Icon} strokeWidth={2} />
                               More Projects
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
                               <DropdownMenuSubContent>
                                 <DropdownMenuItem>
-                                  <HugeiconsIcon
-                                    icon={CodeIcon}
-                                    strokeWidth={2}
-                                  />
+                                  <HugeiconsIcon icon={CodeIcon} strokeWidth={2} />
                                   Project Gamma
                                 </DropdownMenuItem>
                                 <DropdownMenuItem>
-                                  <HugeiconsIcon
-                                    icon={CodeIcon}
-                                    strokeWidth={2}
-                                  />
+                                  <HugeiconsIcon icon={CodeIcon} strokeWidth={2} />
                                   Project Delta
                                 </DropdownMenuItem>
                               </DropdownMenuSubContent>
@@ -318,10 +280,7 @@ function FormExample() {
                               Dark
                             </DropdownMenuRadioItem>
                             <DropdownMenuRadioItem value="system">
-                              <HugeiconsIcon
-                                icon={ComputerIcon}
-                                strokeWidth={2}
-                              />
+                              <HugeiconsIcon icon={ComputerIcon} strokeWidth={2} />
                               System
                             </DropdownMenuRadioItem>
                           </DropdownMenuRadioGroup>
@@ -352,25 +311,16 @@ function FormExample() {
                         <DropdownMenuGroup>
                           <DropdownMenuLabel>Preferences</DropdownMenuLabel>
                           <DropdownMenuItem>
-                            <HugeiconsIcon
-                              icon={KeyboardIcon}
-                              strokeWidth={2}
-                            />
+                            <HugeiconsIcon icon={KeyboardIcon} strokeWidth={2} />
                             Keyboard Shortcuts
                           </DropdownMenuItem>
                           <DropdownMenuItem>
-                            <HugeiconsIcon
-                              icon={LanguageCircleIcon}
-                              strokeWidth={2}
-                            />
+                            <HugeiconsIcon icon={LanguageCircleIcon} strokeWidth={2} />
                             Language
                           </DropdownMenuItem>
                           <DropdownMenuSub>
                             <DropdownMenuSubTrigger>
-                              <HugeiconsIcon
-                                icon={NotificationIcon}
-                                strokeWidth={2}
-                              />
+                              <HugeiconsIcon icon={NotificationIcon} strokeWidth={2} />
                               Notifications
                             </DropdownMenuSubTrigger>
                             <DropdownMenuPortal>
@@ -388,10 +338,7 @@ function FormExample() {
                                       })
                                     }
                                   >
-                                    <HugeiconsIcon
-                                      icon={NotificationIcon}
-                                      strokeWidth={2}
-                                    />
+                                    <HugeiconsIcon icon={NotificationIcon} strokeWidth={2} />
                                     Push Notifications
                                   </DropdownMenuCheckboxItem>
                                   <DropdownMenuCheckboxItem
@@ -403,10 +350,7 @@ function FormExample() {
                                       })
                                     }
                                   >
-                                    <HugeiconsIcon
-                                      icon={MailIcon}
-                                      strokeWidth={2}
-                                    />
+                                    <HugeiconsIcon icon={MailIcon} strokeWidth={2} />
                                     Email Notifications
                                   </DropdownMenuCheckboxItem>
                                 </DropdownMenuGroup>
@@ -517,5 +461,5 @@ function FormExample() {
         </CardContent>
       </Card>
     </Example>
-  );
+  )
 }
